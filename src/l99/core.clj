@@ -20,11 +20,13 @@
 
 ;; P03
 (defn element-at [arr idx]
-  (if (<= (count arr) idx)
+  (if (<= idx 0)
     nil
-    (if (= idx 1)
-      (first arr)
-      (element-at (rest arr) (- idx 1)))))
+    (if (< (count arr) idx)
+       nil
+       (if (= idx 1)
+         (first arr)
+         (element-at (rest arr) (- idx 1))))))
 
 ;; P04
 (defn my-count [arr]

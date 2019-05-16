@@ -61,4 +61,12 @@
       '("a" "b" "c") ["a" ["b" "c"]]
       '(1 2 3 4 5) [1 [2 [3 4]] 5]
       '(1) [[1]]
-      nil [])))
+      '() [])))
+
+(deftest compress-test
+  (testing "remove duplicate element one-before emement in vector/sequence"
+    (are [r v] (= r (compress v))
+      '(1 2 3) [1 2 2 3 3 3]
+      '(1 2 3 2 1) [1 2 2 3 3 3 2 2 1]
+      '("a" "b" "c" "a" "d" "e") '("a" "a" "a" "a" "b" "c" "c" "a" "a" "d" "e" "e" "e" "e")
+      '() '())))

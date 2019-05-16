@@ -36,11 +36,11 @@
 
 ;; P05
 (defn my-reverse [arr]
-  (defn rev [a res]
+  (letfn [(rev [a res]
          (if (empty? a)
            res
-           (rev (rest a) (conj res (first a)))))
-  (rev arr nil))
+           (rev (rest a) (conj res (first a)))))]
+    (rev arr nil)))
 
 ;; P06
 (defn palindrone [arr]
@@ -48,10 +48,20 @@
 
 ;; P07
 (defn my-flatten [arr]
-  (defn f [a r]
+  (letfn [(f [a r]
     (if (empty? a)
       r
       (if (or (seq? (first a)) (vector? (first a)))
-        (f (rest a) (concat r (f (first a) nil)))
-        (f (rest a) (reverse (conj (reverse r) (first a)))))))
-  (f arr nil))
+        (f (rest a) (concat r (f (first a) '())))
+        (f (rest a) (reverse (conj (reverse r) (first a)))))))]
+    (f arr '())))
+
+;; P08
+(defn compress [arr]
+  (letfn [(comp [a r]
+    (if (empty? a)
+      r
+      (if (= (first (reverse r)) (first a))
+        (comp (rest a) r)
+        (comp (rest a) (reverse (conj (reverse r) (first a)))))))]
+    (comp arr '())))

@@ -45,3 +45,13 @@
 ;; P06
 (defn palindrone [arr]
   (= (my-reverse arr) arr))
+
+;; P07
+(defn my-flatten [arr]
+  (defn f [a r]
+    (if (empty? a)
+      r
+      (if (or (seq? (first a)) (vector? (first a)))
+        (f (rest a) (concat r (f (first a) nil)))
+        (f (rest a) (reverse (conj (reverse r) (first a)))))))
+  (f arr nil))

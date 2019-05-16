@@ -52,3 +52,13 @@
       true [1]
       false []; because return value is "nil"
       )))
+
+(deftest my-flatten-test
+  (testing "flatten vector/sequence"
+    (are [r v] (= r (my-flatten v))
+      '(1 2 3) [1 [2 3]]
+      '(1 2 3) '(1 (2 3))
+      '("a" "b" "c") ["a" ["b" "c"]]
+      '(1 2 3 4 5) [1 [2 [3 4]] 5]
+      '(1) [[1]]
+      nil [])))

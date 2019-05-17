@@ -49,19 +49,31 @@
 ;; P07
 (defn my-flatten [arr]
   (letfn [(f [a r]
-    (if (empty? a)
-      r
-      (if (or (seq? (first a)) (vector? (first a)))
-        (f (rest a) (concat r (f (first a) '())))
-        (f (rest a) (reverse (conj (reverse r) (first a)))))))]
+            (if (empty? a)
+              r
+              (if (or (seq? (first a)) (vector? (first a)))
+                (f (rest a) (concat r (f (first a) '())))
+                (f (rest a) (reverse (conj (reverse r) (first a)))))))]
     (f arr '())))
 
 ;; P08
 (defn compress [arr]
   (letfn [(comp [a r]
-    (if (empty? a)
-      r
-      (if (= (first (reverse r)) (first a))
-        (comp (rest a) r)
-        (comp (rest a) (reverse (conj (reverse r) (first a)))))))]
+            (if (empty? a)
+              r
+              (if (= (first (reverse r)) (first a))
+                (comp (rest a) r)
+                (comp (rest a) (reverse (conj (reverse r) (first a)))))))]
     (comp arr '())))
+
+;; P09
+(defn pack [arr]
+  (letfn [(p [a r]
+            (if (empty? a)
+              r
+              (if (empty? r)
+                (p (rest a) (list (list (first a))))
+                (if (= (first (first (reverse r))) (first a))
+                  (p (rest a) (reverse (concat (list (conj (first (reverse r)) (first a))) (rest (reverse r)))))
+                  (p (rest a) (concat r (list (list (first a)))))))))]
+    (p arr '())))

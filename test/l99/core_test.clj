@@ -70,3 +70,11 @@
       '(1 2 3 2 1) [1 2 2 3 3 3 2 2 1]
       '("a" "b" "c" "a" "d" "e") '("a" "a" "a" "a" "b" "c" "c" "a" "a" "d" "e" "e" "e" "e")
       '() '())))
+
+(deftest pack-test
+  (testing "pack same element before element"
+    (are [r v] (= r (pack v))
+      '((1) (2 2) (3 3 3)) [1 2 2 3 3 3]
+      '((a a a a) (b) (c c) (a a) (d) (e e e e)) '(a a a a b c c a a d e e e e)
+      '((1)) [1]
+      '() '())))

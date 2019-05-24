@@ -77,3 +77,7 @@
                   (p (rest a) (reverse (concat (list (conj (first (reverse r)) (first a))) (rest (reverse r)))))
                   (p (rest a) (concat r (list (list (first a)))))))))]
     (p arr '())))
+
+;; P10
+(defn encode [arr]
+  (map (fn [s] (list (count s) (first s))) (pack arr)))

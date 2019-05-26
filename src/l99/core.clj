@@ -81,3 +81,10 @@
 ;; P10
 (defn encode [arr]
   (map (fn [s] (list (count s) (first s))) (pack arr)))
+
+;; P11
+(defn encode-modified [arr]
+  (map (fn [s]
+         (if (= (first s) 1)
+           (first (rest s))
+           s)) (encode arr)))

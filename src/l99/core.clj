@@ -88,3 +88,13 @@
          (if (= (first s) 1)
            (first (rest s))
            s)) (encode arr)))
+
+;; P12
+(defn decode [arr]
+  (letfn [(f [a]
+            (if (seq? a)
+              (if (= (first a) 2)
+                (concat (f (first (rest a))) (rest a))
+                (concat (f (list (- (first a) 1) (first (rest a)))) (rest a)))
+              (list a)))]
+    (flatten (map f arr))))

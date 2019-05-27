@@ -98,3 +98,17 @@
                 (concat (f (list (- (first a) 1) (first (rest a)))) (rest a)))
               (list a)))]
     (flatten (map f arr))))
+
+;; P13
+(defn encode-direct [arr]
+  (letfn [(f [a r]
+            (if (empty? a)
+              (reverse r)
+              (if (seq? (first r))
+                (if (= (first a) (first (reverse (first r))))
+                  (f (rest a) (conj (rest r) (list (+ (first (first r)) 1) (first a))))
+                  (f (rest a) (conj r (first a))))
+                (if (= (first a) (first r))
+                  (f (rest a) (conj (rest r) (list 2 (first a))))
+                  (f (rest a) (conj r (first a)))))))]
+    (f arr '())))

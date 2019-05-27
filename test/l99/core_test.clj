@@ -78,3 +78,23 @@
       '((a a a a) (b) (c c) (a a) (d) (e e e e)) '(a a a a b c c a a d e e e e)
       '((1)) [1]
       '() '())))
+
+(deftest encode-test
+  (testing "convert element count same element in packed list"
+    (are [r v] (= r (encode v))
+      '((4 a) (1 b) (2 c) (2 a) (1 d) (4 e)) '(a a a a b c c a a d e e e e))))
+
+(deftest encode-modified-test
+  (testing "convert element count same element in packed list if number of elements over 2"
+    (are [r v] (= r (encode-modified v))
+      '((4 a) b (2 c) (2 a) d (4 e)) '(a a a a b c c a a d e e e e))))
+
+(deftest decode-test
+  (testing "convert flatten list from encode list"
+    (are [r v] (= r (decode v))
+      '(a a a a b c c a a d e e e e) '((4 a) b (2 c) (2 a) d (4 e)))))
+
+(deftest encode-direct-test
+  (testing "encode directly"
+    (are [r v] (= r (encode-direct v))
+      '((4 a) b (2 c) (2 a) d (4 e)) '(a a a a b c c a a d e e e e))))

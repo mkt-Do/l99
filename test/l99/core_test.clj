@@ -103,3 +103,8 @@
   (testing "duplicate elements of the list"
     (are [r v] (= r (dupli v))
       '(a a b b c c c c d d) '(a b c c d))))
+
+(deftest repli-test
+  (testing "replicate elements of the list"
+    (are [r v t] (= r (repli v t))
+      '(a a a b b b c c c) '(a b c) 3)))

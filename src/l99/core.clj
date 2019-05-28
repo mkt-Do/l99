@@ -116,3 +116,7 @@
 ;; P14
 (defn dupli [arr]
   (flatten (map (fn [v] (list v v)) arr)))
+
+;; P15
+(defn repli [arr times]
+  (flatten (map (fn [v] (take times (repeat v))) arr)))

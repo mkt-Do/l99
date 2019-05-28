@@ -108,3 +108,8 @@
   (testing "replicate elements of the list"
     (are [r v t] (= r (repli v t))
       '(a a a b b b c c c) '(a b c) 3)))
+
+(deftest my-drop-test
+  (testing "drop every Nth elements in list"
+    (are [r v i] (= r (my-drop v i))
+      '(a b d e g h k) '(a b c d e f g h i k) 3)))

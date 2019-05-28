@@ -120,3 +120,13 @@
 ;; P15
 (defn repli [arr times]
   (flatten (map (fn [v] (take times (repeat v))) arr)))
+
+;; P16
+(defn my-drop [arr idx]
+  (letfn [(f [a i]
+            (if (or (empty? a) (< i 1))
+              a
+              (if (= i 1)
+                (f (rest a) idx)
+                (concat (list (first a)) (f (rest a) (- i 1))))))]
+    (f arr idx)))

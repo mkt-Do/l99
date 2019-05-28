@@ -112,3 +112,7 @@
                   (f (rest a) (conj (rest r) (list 2 (first a))))
                   (f (rest a) (conj r (first a)))))))]
     (f arr '())))
+
+;; P14
+(defn dupli [arr]
+  (flatten (map (fn [v] (list v v)) arr)))

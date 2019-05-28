@@ -98,3 +98,8 @@
   (testing "encode directly"
     (are [r v] (= r (encode-direct v))
       '((4 a) b (2 c) (2 a) d (4 e)) '(a a a a b c c a a d e e e e))))
+
+(deftest dupli-test
+  (testing "duplicate elements of the list"
+    (are [r v] (= r (dupli v))
+      '(a a b b c c c c d d) '(a b c c d))))

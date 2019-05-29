@@ -130,3 +130,13 @@
                 (f (rest a) idx)
                 (concat (list (first a)) (f (rest a) (- i 1))))))]
     (f arr idx)))
+
+;; P17
+(defn split [arr idx]
+  (letfn [(f [a i r]
+            (if (or (empty? a) (< i 0))
+              r
+              (if (= i 0)
+                (list r a)
+                (f (rest a) (- i 1) (reverse (conj (reverse r) (first a)))))))]
+    (f arr idx '())))

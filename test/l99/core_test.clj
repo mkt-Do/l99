@@ -118,3 +118,8 @@
   (testing "split list by given number"
     (are [r v i] (= r (split v i))
       '((a b c) (d e f g h i k)) '(a b c d e f g h i k) 3)))
+
+(deftest slice-test
+  (testing "slice list"
+    (are [r v s e] (= r (slice v s e))
+      '(c d e f g) '(a b c d e f g h i k) 3 7)))

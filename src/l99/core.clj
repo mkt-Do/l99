@@ -140,3 +140,15 @@
                 (list r a)
                 (f (rest a) (- i 1) (reverse (conj (reverse r) (first a)))))))]
     (f arr idx '())))
+
+;; P18
+(defn slice [arr st ed]
+  (if (or (< st 1) (< ed 1) (< (count arr) st) (< (count arr) ed) (> st ed))
+    arr
+    (letfn [(f [a s e r]
+              (if (= e 0)
+                (conj r (first a))
+                (if (= s 0)
+                  (f (rest a) s (- e 1) (conj r (first a)))
+                  (f (rest a) (- s 1) (- e 1) r))))]
+      (reverse (f arr (- st 1) (- ed 1) '())))))

@@ -123,3 +123,9 @@
   (testing "slice list"
     (are [r v s e] (= r (slice v s e))
       '(c d e f g) '(a b c d e f g h i k) 3 7)))
+
+(deftest rotate-test
+  (testing "rotate n times for list"
+    (are [r v t] (= r (rotate v t))
+      '(d e f g h a b c) '(a b c d e f g h) 3
+      '(g h a b c d e f) '(a b c d e f g h) -2)))

@@ -152,3 +152,11 @@
                   (f (rest a) s (- e 1) (conj r (first a)))
                   (f (rest a) (- s 1) (- e 1) r))))]
       (reverse (f arr (- st 1) (- ed 1) '())))))
+
+;; P19
+(defn rotate [arr t]
+  (if (= t 0)
+    arr
+    (if (< t 0)
+      (rotate (conj (reverse (rest (reverse arr))) (first (reverse arr))) (+ t 1))
+      (rotate (reverse (conj (reverse (rest arr)) (first arr))) (- t 1)))))

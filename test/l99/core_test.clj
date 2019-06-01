@@ -129,3 +129,8 @@
     (are [r v t] (= r (rotate v t))
       '(d e f g h a b c) '(a b c d e f g h) 3
       '(g h a b c d e f) '(a b c d e f g h) -2)))
+
+(deftest remove-at-test
+  (testing "remove element for index"
+    (are [r v i] (= r (remove-at v i))
+      '(a c d) '(a b c d) 2)))

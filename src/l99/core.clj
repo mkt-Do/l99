@@ -160,3 +160,12 @@
     (if (< t 0)
       (rotate (conj (reverse (rest (reverse arr))) (first (reverse arr))) (+ t 1))
       (rotate (reverse (conj (reverse (rest arr)) (first arr))) (- t 1)))))
+
+;; P20
+(defn remove-at [arr idx]
+  (if (< idx 1)
+    arr
+    (if (= idx 1)
+      (rest arr)
+      (-> (remove-at (rest arr) (- idx 1))
+          (conj (first arr))))))

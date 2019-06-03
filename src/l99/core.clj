@@ -169,3 +169,12 @@
       (rest arr)
       (-> (remove-at (rest arr) (- idx 1))
           (conj (first arr))))))
+
+;; P21
+(defn insert-at [v arr idx]
+  (if (< idx 1)
+    arr
+    (if (= idx 1)
+      (conj arr v)
+      (-> (insert-at v (rest arr) (- idx 1))
+          (conj (first arr))))))

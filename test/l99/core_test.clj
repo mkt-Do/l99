@@ -134,3 +134,8 @@
   (testing "remove element for index"
     (are [r v i] (= r (remove-at v i))
       '(a c d) '(a b c d) 2)))
+
+(deftest insert-at-test
+  (testing "insert element at index"
+    (are [r p v i] (= r (insert-at p v i))
+      '(a alfa b c d) 'alfa '(a b c d) 2)))

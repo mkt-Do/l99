@@ -139,3 +139,8 @@
   (testing "insert element at index"
     (are [r p v i] (= r (insert-at p v i))
       '(a alfa b c d) 'alfa '(a b c d) 2)))
+
+(deftest my-range-test
+  (testing "create list for range"
+    (are [r s e] (= r (my-range s e))
+      '(4 5 6 7 8 9) 4 9)))

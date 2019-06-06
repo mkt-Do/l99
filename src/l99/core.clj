@@ -178,3 +178,12 @@
       (conj arr v)
       (-> (insert-at v (rest arr) (- idx 1))
           (conj (first arr))))))
+
+;; P22
+(defn my-range [st ed]
+  (if (> st ed)
+    '()
+    (if (= st ed)
+      (list st)
+      (-> (my-range (+ st 1) ed)
+          (conj st)))))

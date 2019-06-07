@@ -187,3 +187,10 @@
       (list st)
       (-> (my-range (+ st 1) ed)
           (conj st)))))
+
+;; P23
+(defn rnd-select [arr n]
+  (if (<= n 0)
+    '()
+    (let [r (+ (rand-int (count arr)) 1)]
+      (conj (rnd-select (remove-at arr r) (- n 1)) (element-at arr r)))))

@@ -194,3 +194,15 @@
     '()
     (let [r (+ (rand-int (count arr)) 1)]
       (conj (rnd-select (remove-at arr r) (- n 1)) (element-at arr r)))))
+
+;; P24
+(defn lotto-select [n mx]
+  (if (<= mx 0)
+    '()
+    (let [ls (range 1 mx)]
+      (letfn [(f [arr l]
+                (if (<= l 0)
+                  '()
+                  (let [r (rand-int (+ (count arr) 1))]
+                    (conj (f (remove-at arr r) (- l 1)) (element-at arr r)))))]
+        (f ls n)))))

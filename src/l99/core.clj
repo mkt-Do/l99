@@ -206,3 +206,7 @@
                   (let [r (rand-int (+ (count arr) 1))]
                     (conj (f (remove-at arr r) (- l 1)) (element-at arr r)))))]
         (f ls n)))))
+
+;; P25
+(defn rnd-permu [arr]
+  (rnd-select arr (count arr)))

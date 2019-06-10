@@ -144,3 +144,8 @@
   (testing "create list for range"
     (are [r s e] (= r (my-range s e))
       '(4 5 6 7 8 9) 4 9)))
+
+(deftest combination-test
+  (testing "create combination list"
+    (are [r n s] (= r (combination n s))
+      '((1 2) (1 3) (2 3)) 2 '(1 2 3))))

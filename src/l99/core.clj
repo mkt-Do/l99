@@ -210,3 +210,12 @@
 ;; P25
 (defn rnd-permu [arr]
   (rnd-select arr (count arr)))
+
+;; P26
+(defn combination [n arr]
+  (if (or (< n 1) (empty? arr))
+    '()
+    (if (= n 1)
+      (map list arr)
+      (-> (map (fn [a] (conj a (first arr))) (combination (- n 1) (rest arr)))
+          (concat (combination n (rest arr)))))))
